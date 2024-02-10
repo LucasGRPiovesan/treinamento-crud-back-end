@@ -32,6 +32,12 @@ Listagem de funcionários e dependentes:
 GET: http://localhost:<porta>/routes/<funcionarios, dependentes>/listar
 ```
 
+Funcionário ou dependente específico:
+
+```
+GET: http://localhost:<porta>/routes/<funcionarios, dependentes>/<id_funcionario, id_dependente>
+```
+
 Cadastro de funcionários:
 
 ```

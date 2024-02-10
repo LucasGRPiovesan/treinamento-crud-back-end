@@ -26,8 +26,32 @@ router.get('/listar', function (req, res) {
         
     } catch (error) {
         
-        res.status(200).json({
+        res.status(500).json({
             msg: 'Erro ao listar funcionários!',
+            data: error
+        });
+    }
+});
+
+router.get('/:id', function (req, res) {
+
+    try {
+
+        conn.execute(
+            `SELECT nome FROM tbl_funcionarios WHERE id = ?;`, [req.params.id], function (err, response, fields) {
+    
+            if (err) throw err;
+
+            res.status(200).json({
+                msg: 'Sucesso na consulta do funcionário!',
+                data: response[0]
+            });
+        });
+        
+    } catch (error) {
+        
+        res.status(200).json({
+            msg: 'Erro ao consultar funcionário!',
             data: error
         });
     }
